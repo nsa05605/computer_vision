@@ -1,16 +1,11 @@
-#include <iostream>
-#include <opencv2/opencv.hpp>
-#include <stdlib.h>
+#include "edge_detection.h"
 
-using namespace std;
-using namespace cv;
-
-void Canny_Edge(Mat img)
+void Canny_Edge(String path_source)
 {
 	//ChangeColor(img);
 	//GaussianBlur(img);
 
-	Mat imgGRAY, imgBlur_GRAY_3, imgBlur_GRAY_5;
+	Mat imgBlur_GRAY_3, imgBlur_GRAY_5;
 	Mat imgCanny_GRAY_1, imgCanny_GRAY_2, imgCanny_GRAY_3, imgCanny_GRAY_4;
 	Mat imgCanny_GRAY_5, imgCanny_GRAY_6, imgCanny_GRAY_7, imgCanny_GRAY_8;
 	// Mat imgHSV, imgBlur_HSV, imgCanny_HSV;
@@ -19,7 +14,7 @@ void Canny_Edge(Mat img)
 	// size를 절반으로 줄이는 resize
 	// RGB를 Gray 혹은 HSV로 전환
 	// resize(img, imgResize, Size(), 0.5, 0.5);
-	cvtColor(img, imgGRAY, COLOR_BGR2GRAY);
+	Mat imgGRAY = imread(path_source, IMREAD_GRAYSCALE);
 	// cvtColor(img, imgHSV, COLOR_BGR2HSV);
 
 	// imshow("Image", img);

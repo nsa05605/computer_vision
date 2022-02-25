@@ -1,16 +1,11 @@
-#include <iostream>
-#include <opencv2/opencv.hpp>
-#include <stdlib.h>
+#include "edge_detection.h"
 
-using namespace std;
-using namespace cv;
-
-void Harris_Corner(Mat img)
+void Harris_Corner(string path_source)
 {
-	Mat src, imgGRAY;																	// src는 입력 image
-	cvtColor(img, imgGRAY, COLOR_BGR2GRAY);
-	
-	if (imgGRAY.rows > 1000)														// size 맞춰주기
+	Mat src;																// src는 입력 image
+	Mat imgGRAY = imread(path_source, IMREAD_GRAYSCALE);
+
+	if (imgGRAY.rows > 1000)												// size 맞춰주기
 	{
 		resize(imgGRAY, src, Size(), 0.3, 0.3);
 		// Mat src = imread("apple.png", IMREAD_GRAYSCALE);
