@@ -19,7 +19,9 @@ int homography(string path_source, string path_target)
 	Mat first_image = imread(path_source, IMREAD_GRAYSCALE);
 	// 이미지 읽기
 	// Mat first_image = imread("Source.png", IMREAD_GRAYSCALE);
-	Mat second_image = imread("Target.png", IMREAD_GRAYSCALE);
+	Mat second_image = imread(path_target, IMREAD_GRAYSCALE);
+	m_resize(first_image, first_image);
+	m_resize(second_image, second_image);
 	// decriptor 행렬
 	Mat des_first, des_second;
 	// keypoint 벡터
@@ -107,12 +109,15 @@ int homography(string path_source, string path_target)
 		first_point.push_back(kp_first[good_matches[i].queryIdx].pt);
 		second_point.push_back(kp_second[good_matches[i].trainIdx].pt);
 	}
+
 	Mat H = findHomography(first_point, second_point, RANSAC);
+	// first_point : 원본 좌표 배열
+	// second_point : 결과 좌표 배열
+	// RANSAC : 근사 계산 알고리즘
 	cout << "Homography" << endl;
 	cout << H << endl;
 	while (waitKey(1) != 37) {
 		continue;
 	}
-
 	return 0;
 }

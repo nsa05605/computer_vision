@@ -12,6 +12,9 @@ int key_match(string path_source, string path_target)
 		return -1;
 	}
 
+	m_resize(src, src);
+	m_resize(trg, trg);
+	
 	Ptr<Feature2D> feature = ORB::create();
 
 	vector<KeyPoint> trgKeypoints, srcKeypoints;

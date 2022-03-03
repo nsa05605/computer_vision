@@ -33,6 +33,18 @@
     <ClCompile Include="homography.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="VideoCapture.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pedestrian_detection.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="resize.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Epipolar_Geometry.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="edge_detection.h">
