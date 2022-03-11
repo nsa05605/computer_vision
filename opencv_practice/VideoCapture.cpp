@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "edge_detection.h"
 
-int Video_Capture()
+int Video_Capture(int time)
 {
 	int index = 0;
 	char buf[256];
@@ -30,8 +30,8 @@ int Video_Capture()
 		index++;
 		if (index == 999999) index = 0;
 
-		Sleep(2000);
-		// 2초 대기
+		Sleep(time);
+		// time 초 대기
 
 		if (waitKey(25) == 27) break;
 	}

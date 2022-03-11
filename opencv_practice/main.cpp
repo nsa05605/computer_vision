@@ -9,10 +9,11 @@ int main()
 	char in;
 	cout << "input name of work" << '\n' << "Canny_Edge : c" << '\n' << "Harris_Corner : h"
 		<< '\n' << "Keypoint_Matching : k" << '\n' << "homography : (large) H" << '\n'
-		<< "Video_Capture : v" << '\n' << "Pedestrian_Detection : p" << endl;
+		<< "Video_Capture : v" << '\n' << "Pedestrian_Detection : p" << '\n'
+		<< "FATS_algorithm : f" << endl;
 	cin >> in;
 
-	if (in == 'c' || in == 'h' || in == 'k' || in == 'H') {
+	if (in == 'c' || in == 'h' || in == 'k' || in == 'H' || in == 'f') {
 		real_time = "no";
 	}
 	else if (in == 'v' || in == 'p') {
@@ -22,7 +23,7 @@ int main()
 	if (real_time == "real") {
 		if (in == 'v') {
 			// VideoCapture
-			Video_Capture();
+			Video_Capture(5000);
 		}
 		else if (in == 'p') {
 			// pedestrian_detection
@@ -30,27 +31,33 @@ int main()
 		}
 	}
 	else if (real_time == "no") {
-		cout << "input path_source : ";
-		cin >> path_source;
+		if (in == 'f') {
+			// FAST algorithm
+			FAST();
+		}
+		else {
+			cout << "input path_source : ";
+			cin >> path_source;
 
-		if (in == 'c') {
-			// Canny Edge
-			Canny_Edge(path_source);
-		}
-		else if (in == 'h') {
-			// Harris Corner
-			Harris_Corner(path_source);
-		}
-		else if (in == 'H' || in == 'k') {
-			cout << "input path_target : ";
-			cin >> path_target;
-			if (in == 'H') {
-				// Homography
-				homography(path_source, path_target);
+			if (in == 'c') {
+				// Canny Edge
+				Canny_Edge(path_source);
 			}
-			else if (in == 'k') {
-				// Keypoint Matching
-				key_match(path_source, path_target);
+			else if (in == 'h') {
+				// Harris Corner
+				Harris_Corner(path_source);
+			}
+			else if (in == 'H' || in == 'k') {
+				cout << "input path_target : ";
+				cin >> path_target;
+				if (in == 'H') {
+					// Homography
+					homography(path_source, path_target);
+				}
+				else if (in == 'k') {
+					// Keypoint Matching
+					key_match(path_source, path_target);
+				}
 			}
 		}
 	}
